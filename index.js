@@ -8,6 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(cors());
+app.use(express.json());
 
 const users = [
     { id: 1, name: "Avi", email: "avi@gmail.com" },
@@ -21,6 +22,7 @@ app.get('/users', (req, res) => {
 
 app.post('/users', (req, res) => {
     console.log('Post API called');
+    console.log(req.body);
 });
 
 app.listen(port, () => {
