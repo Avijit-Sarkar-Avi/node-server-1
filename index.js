@@ -22,7 +22,11 @@ app.get('/users', (req, res) => {
 
 app.post('/users', (req, res) => {
     console.log('Post API called');
-    console.log(req.body);
+    const user = req.body;
+    user.id = users.length + 1;
+    users.push(user);
+    console.log(user);
+    res.send(user);
 });
 
 app.listen(port, () => {
