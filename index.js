@@ -22,9 +22,17 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         const userCollection = client.db('simpleNode').collection('users');
-        const user = { name: 'Avijit Avi', email: 'avijit@avi.com' }
-        const result = await userCollection.insertOne(user);
-        console.log(result);
+        const user = { name: 'kobijit kobi', email: 'kobijit@kobi.com' }
+        // const result = await userCollection.insertOne(user);
+        // console.log(result);
+
+        app.post('/users', (req, res) => {
+            const user = req.body;
+            user.id = users.length + 1;
+            users.push(user);
+            console.log(user);
+            res.send(user);
+        });
     }
     finally {
 
@@ -54,13 +62,13 @@ app.get('/users', (req, res) => {
 
 });
 
-app.post('/users', (req, res) => {
-    const user = req.body;
-    user.id = users.length + 1;
-    users.push(user);
-    console.log(user);
-    res.send(user);
-});
+// app.post('/users', (req, res) => {
+//     const user = req.body;
+//     user.id = users.length + 1;
+//     users.push(user);
+//     console.log(user);
+//     res.send(user);
+// });
 
 app.listen(port, () => {
     console.log(`Simple server running on port ${port}`);
