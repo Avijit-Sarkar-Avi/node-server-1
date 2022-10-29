@@ -21,7 +21,10 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 async function run() {
     try {
-
+        const userCollection = client.db('simpleNode').collection('users');
+        const user = { name: 'Avijit Avi', email: 'avijit@avi.com' }
+        const result = await userCollection.insertOne(user);
+        console.log(result);
     }
     finally {
 
