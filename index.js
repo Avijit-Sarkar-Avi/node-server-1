@@ -18,12 +18,7 @@ app.use(express.json());
 
 const uri = "mongodb+srv://dbuser1:v4G00iAgH1bxScxQ@cluster0.bkopbwy.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-    const collection = client.db("simpleNode").collection("users");
-    // perform actions on the collection object
-    console.log('db connected');
-    client.close();
-});
+
 
 
 
