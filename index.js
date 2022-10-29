@@ -26,11 +26,14 @@ async function run() {
         // const result = await userCollection.insertOne(user);
         // console.log(result);
 
-        app.post('/users', (req, res) => {
+        app.post('/users', async (req, res) => {
             const user = req.body;
             user.id = users.length + 1;
-            users.push(user);
-            console.log(user);
+            // users.push(user);
+            // console.log(user);
+            const result = await userCollection.insertOne(user);
+            console.log(result);
+            user.id = result.insertedId;
             res.send(user);
         });
     }
