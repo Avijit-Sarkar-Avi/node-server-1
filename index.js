@@ -17,11 +17,11 @@ const users = [
 ];
 
 app.get('/users', (req, res) => {
+    console.log(req.query);
     res.send(users);
 });
 
 app.post('/users', (req, res) => {
-    console.log('Post API called');
     const user = req.body;
     user.id = users.length + 1;
     users.push(user);
