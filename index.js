@@ -17,7 +17,11 @@ const users = [
 
 app.get('/users', (req, res) => {
     res.send(users);
-})
+});
+
+app.post('/users', (req, res) => {
+    console.log('Post API called');
+});
 
 app.listen(port, () => {
     console.log(`Simple server running on port ${port}`);
